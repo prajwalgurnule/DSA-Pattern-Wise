@@ -1,0 +1,17 @@
+class Solution {
+    // These Problem Comes Under Variable-Size Sliding Window
+    public int minSubArrayLen(int target, int[] nums) {
+        int left = 0, Windowsum = 0, minLen = Integer.MAX_VALUE;
+
+        for (int right = 0; right < nums.length; right++) { 
+            Windowsum += nums[right];
+
+            while (Windowsum >= target) {
+                minLen = Math.min(minLen, right - left + 1);
+                Windowsum -= nums[left++];
+            }
+        }
+
+        return minLen == Integer.MAX_VALUE ? 0 : minLen; // If there is no such subarray, return 0 instead.
+    }
+}
