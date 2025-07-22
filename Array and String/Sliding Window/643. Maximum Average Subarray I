@@ -1,0 +1,18 @@
+class Solution {
+    public double findMaxAverage(int[] nums, int k) {
+        double maxSum, WindowSum=0;
+        
+        for (int i=0; i<k; i++){ // Here I Compute Sum for the first Window
+            WindowSum += nums[i];
+        }
+        
+        double average=WindowSum/k; // Calculated the average based on First Window
+        maxSum = average;
+        for (int i=k; i<nums.length; i++){ // Now Slide the Window
+            WindowSum += nums[i] - nums[i-k]; // Add new Element , remove old element
+            double tempAverage= WindowSum/k;
+            maxSum = Math.max(maxSum, tempAverage);
+        }
+        return maxSum;
+    }
+}
