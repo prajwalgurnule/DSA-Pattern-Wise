@@ -1,0 +1,13 @@
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        // Applied Two Pointer - Same direction Approach where created two pointers left and right.
+        int left = 0; 
+        for (int right = 0; right<nums.length; right++){
+            if (nums[right] != val){
+                nums[left] = nums[right];
+                left ++;
+            }
+        }
+        return left;
+    }
+}
