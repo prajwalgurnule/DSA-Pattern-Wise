@@ -1,0 +1,39 @@
+class Solution {
+    public String reverseWords(String s) {
+        // Step 1: Split the input string by spaces.
+        // This can result in empty strings ("") if there are multiple spaces between words.
+        String[] words = s.split(" ");
+
+        // Step 2: Initialize two pointers for reversing the array of words.
+        int left = 0;
+        int right = words.length - 1;
+
+        // Step 3: Reverse the entire array using the two-pointer approach.
+        while (left < right) {
+            // Swap words at positions left and right
+            String temp = words[left];
+            words[left] = words[right];
+            words[right] = temp;
+            left++;
+            right--;
+        }
+
+        // Step 4: Build the final result string.
+        // This will skip any empty strings caused by multiple spaces.
+        StringBuilder result = new StringBuilder();
+        for (String word : words) {
+            // Skip empty strings
+            if (!word.isEmpty()) {
+                // Append a space if result already has some words
+                if (result.length() > 0) {
+                    result.append(" ");
+                }
+                // Append the word
+                result.append(word);
+            }
+        }
+
+        // Step 5: Return the cleaned and reversed string
+        return result.toString();
+    }
+}
