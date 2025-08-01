@@ -1,0 +1,40 @@
+import java.util.*;
+
+class Node{
+    int data;
+    Node next;
+    public Node(int data){
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class Main {
+    // Checks whether key is present in linked list
+    static boolean searchKey(Node head, int key){
+        Node curr = head;
+        while (curr != null){
+            if (curr.data == key) return true;
+            curr = curr.next;
+        }
+        return false;
+    }
+    
+    public static void main(String[] args) {
+        // Create a hard-coded linked list:
+        // Suppose we create 10 -> 20 -> 30 -> 40
+        Node head = new Node(10);
+        head.next = new Node(20);
+        head.next.next = new Node(30);
+        head.next.next.next = new Node(40);
+
+        // Key to search in the linked list
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Key to Search-");
+        int key = sc.nextInt();
+        if (searchKey(head, key))
+            System.out.println("Yes");
+        else
+            System.out.println("No");
+    }
+}
