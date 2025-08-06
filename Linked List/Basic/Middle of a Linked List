@@ -1,0 +1,41 @@
+/* Node of a linked list
+ class Node {
+   int data;
+    Node next;
+    Node(int d)  { data = d;  next = null; }
+}
+*/
+
+class Solution {
+    static int getLength(Node head) {
+
+        // Variable to store length
+        int length = 0;
+
+        // Traverse the entire linked list and increment
+        // length by 1 for each node
+        while (head != null) {
+            length++;
+            head = head.next;
+        }
+
+        // Return the number of nodes in the linked list
+        return length;
+    }
+
+    // Function to get the middle value of the linked list
+    static int getMiddle(Node head) {
+      
+        // Finding the length of the list
+        int length = getLength(head);
+
+        // traverse till we reached half of length
+        int mid_index = length / 2;
+        while (mid_index > 0) {
+            head = head.next;
+            mid_index--;
+        }
+        // temp will be storing middle element
+        return head.data;
+    }
+}
