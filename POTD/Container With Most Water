@@ -1,0 +1,29 @@
+class Solution {
+    public int maxWater(int arr[]) {
+        // Code Here
+        int n = arr.length;          // Total number of vertical lines
+        int max = 0;                // To store the maximum area found
+        int area;                   // To store the area for current pair
+        int i = 0, j = n - 1;       // Two pointers: i starts from left, j from right
+
+        // Apply Two Pointer Approach
+        while (i < j) {
+            // Calculate area between lines at i and j
+            // Area = width * arr (refer height), where arr is the smaller of the two lines
+            area = (j - i) * Math.min(arr[i], arr[j]);
+
+            // Update max area if current area is greater
+            if (area > max) max = area;
+
+            // Move the pointer pointing to the shorter line inward
+            // because moving the taller one won't help increase area
+            if (arr[i] < arr[j]) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+
+        return max; // Return the maximum area found
+    }
+}
